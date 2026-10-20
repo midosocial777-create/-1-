@@ -1,0 +1,1793 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0b0e14">
+    <meta name="description" content="عالم الخيال - بطولات EA FC وبلايستيشن. سجل في البطولة، تابع التصفيات، واكتشف الأبطال.">
+
+    <title>عالم الخيال | بطولات البلايستيشن</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;600;700;800;900&family=Cairo:wght@300;400;500;600;700;800;900&family=Orbitron:wght@600;700;800;900&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            green: '#00ff66',
+                            darkGreen: '#00cc52',
+                            dark: '#0b0e14',
+                            card: '#151a23',
+                            border: '#222b38'
+                        }
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                        alexandria: ['Alexandria', 'sans-serif'],
+                        orbitron: ['Orbitron', 'sans-serif']
+                    }
+                }
+            }
+        };
+    </script>
+
+    <style>
+        :root {
+            color-scheme: dark;
+            --bg: #0b0e14;
+            --card: #151a23;
+            --border: #222b38;
+            --green: #00ff66;
+            --green-dark: #00cc52;
+            --gold: #fbbf24;
+        }
+
+        * { box-sizing: border-box; }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: 'Cairo', sans-serif;
+            background: var(--bg);
+            color: #f3f4f6;
+            overflow-x: clip;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        button, input { font: inherit; }
+        button, a { touch-action: manipulation; }
+        button { cursor: pointer; }
+        a { text-decoration: none; }
+        img { max-width: 100%; }
+
+        section[id] { scroll-margin-top: 105px; }
+
+        .font-orbitron { font-family: 'Orbitron', sans-serif; }
+
+        .logo-arabic {
+            display: block;
+            font-family: 'Alexandria', 'Cairo', sans-serif;
+            font-size: clamp(1.15rem, 2.2vw, 1.75rem);
+            font-weight: 800;
+            letter-spacing: 0;
+            line-height: 1.65;
+            white-space: nowrap;
+            direction: rtl;
+            unicode-bidi: isolate;
+            filter: drop-shadow(0 0 8px rgba(0, 255, 102, 0.10));
+            transition: filter 0.25s ease;
+        }
+
+        .logo-arabic:hover {
+            filter: drop-shadow(0 0 12px rgba(0, 255, 102, 0.24));
+        }
+
+        .logo-world {
+            color: var(--green);
+            text-shadow: 0 0 12px rgba(0, 255, 102, 0.22);
+        }
+
+        .logo-fantasy {
+            color: #fff;
+            margin-right: 0.25em;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.08);
+        }
+
+        .logo-subtitle {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 9px;
+            font-weight: 800;
+            letter-spacing: 1.8px;
+            color: var(--green);
+            line-height: 1.5;
+        }
+
+        .neon-glow { box-shadow: 0 0 20px rgba(0, 255, 102, 0.18); }
+        .neon-border { border-color: var(--green); box-shadow: 0 0 10px rgba(0, 255, 102, 0.24); }
+        .neon-text { text-shadow: 0 0 10px rgba(0, 255, 102, 0.42); }
+
+        .glass-header {
+            background: rgba(11, 14, 20, 0.94);
+            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(16px);
+        }
+
+        .section-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 1.5rem;
+        }
+
+        .field-input {
+            width: 100%;
+            min-width: 0;
+            min-height: 48px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 0.8rem;
+            padding: 0.8rem 1rem;
+            padding-left: 2.7rem;
+            color: white;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .field-input:focus {
+            border-color: var(--green);
+            box-shadow: 0 0 0 3px rgba(0, 255, 102, 0.08);
+        }
+
+        .field-input::placeholder { color: #6b7280; }
+
+        .match-winner {
+            border-right: 2px solid var(--green) !important;
+            background: rgba(0, 255, 102, 0.12) !important;
+            font-weight: 900;
+        }
+
+        .hero-badge { max-width: 100%; line-height: 1.8; }
+
+        .registration-title {
+            font-family: 'Alexandria', 'Cairo', sans-serif;
+            font-weight: 900;
+            line-height: 1.9;
+            text-align: center;
+            direction: rtl;
+            unicode-bidi: isolate;
+            overflow-wrap: anywhere;
+        }
+
+        .registration-title .registration-brand {
+            display: inline-block;
+            font-family: 'Alexandria', 'Cairo', sans-serif;
+            font-weight: 900;
+            letter-spacing: 0;
+            color: var(--green);
+            text-shadow: 0 0 12px rgba(0, 255, 102, 0.18);
+            white-space: nowrap;
+            unicode-bidi: isolate;
+        }
+
+        .bracket-scroll {
+            width: 100%;
+            overflow-x: auto;
+            overscroll-behavior-x: contain;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+            scrollbar-color: var(--green) var(--bg);
+        }
+
+        .bracket-grid {
+            min-width: 1000px;
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 1rem;
+            align-items: stretch;
+        }
+
+        .bracket-col { min-width: 0; }
+
+        .round-tab {
+            min-height: 42px;
+            flex-shrink: 0;
+            transition: background 0.2s, color 0.2s, border-color 0.2s;
+        }
+
+        .round-tab:focus-visible,
+        button:focus-visible,
+        a:focus-visible {
+            outline: 2px solid var(--green);
+            outline-offset: 3px;
+        }
+
+        .mobile-bracket-hint { display: none; }
+        .bracket-matches { min-width: 0; }
+        .match-card { min-width: 0; }
+        .hall-card { min-width: 0; }
+
+        /* Champion card in the Hall of Fame */
+        .hall-card-champion {
+            border-color: #fbbf24 !important;
+            box-shadow:
+                0 0 28px rgba(251, 191, 36, 0.15),
+                inset 0 0 25px rgba(251, 191, 36, 0.035);
+            position: relative;
+        }
+
+        .hall-card-champion::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(
+                circle at top,
+                rgba(251, 191, 36, 0.12),
+                transparent 65%
+            );
+            pointer-events: none;
+        }
+
+        .hall-card-champion .hall-player-image {
+            border-color: #fbbf24 !important;
+            box-shadow: 0 0 18px rgba(251, 191, 36, 0.20);
+        }
+
+        .hall- champion-badge {
+            background: rgba(251, 191, 36, 0.13);
+            border: 1px solid rgba(251, 191, 36, 0.55);
+            color: #fcd34d;
+        }
+
+        .hall-champion-badge {
+            background: rgba(251, 191, 36, 0.13);
+            border: 1px solid rgba(251, 191, 36, 0.55);
+            color: #fcd34d;
+        }
+
+        .hall-regular-badge {
+            background: rgba(0, 255, 102, 0.10);
+            border: 1px solid rgba(0, 255, 102, 0.30);
+            color: var(--green);
+        }
+
+        /* Leaderboard champion styling */
+        .leaderboard-champion {
+            background: linear-gradient(
+                110deg,
+                rgba(251, 191, 36, 0.12),
+                rgba(21, 26, 35, 0.97) 65%
+            ) !important;
+            border-color: rgba(251, 191, 36, 0.75) !important;
+            box-shadow:
+                0 0 22px rgba(251, 191, 36, 0.10),
+                inset 0 0 18px rgba(251, 191, 36, 0.035);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .leaderboard-champion::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, #fde68a, #d97706);
+        }
+
+        .leaderboard-champion .leaderboard-rank {
+            background: linear-gradient(135deg, #fde68a, #f59e0b) !important;
+            color: #171717 !important;
+            box-shadow: 0 0 15px rgba(251, 191, 36, 0.30);
+        }
+
+        .leaderboard-champion .leaderboard-name { color: #fde68a !important; }
+
+        .leaderboard-crown {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 31px;
+            height: 31px;
+            border-radius: 10px;
+            color: #fcd34d;
+            background: rgba(251, 191, 36, 0.13);
+            border: 1px solid rgba(251, 191, 36, 0.30);
+            flex-shrink: 0;
+            animation: crownGlow 2.4s ease-in-out infinite;
+        }
+
+        .current-champion-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            width: fit-content;
+            margin-top: 5px;
+            padding: 3px 8px;
+            border-radius: 999px;
+            color: #fcd34d;
+            background: rgba(251, 191, 36, 0.11);
+            border: 1px solid rgba(251, 191, 36, 0.28);
+            font-size: 9px;
+            font-weight: 900;
+            letter-spacing: 0.1px;
+        }
+
+        @keyframes crownGlow {
+            0%, 100% {
+                box-shadow: 0 0 0 rgba(251, 191, 36, 0);
+                transform: translateY(0);
+            }
+            50% {
+                box-shadow: 0 0 14px rgba(251, 191, 36, 0.20);
+                transform: translateY(-1px);
+            }
+        }
+
+        /* Clickable player photos */
+        .hall-player-image {
+            cursor: zoom-in;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        .hall-player-image:focus-visible {
+            outline: 3px solid var(--gold);
+            outline-offset: 5px;
+        }
+
+        /* Full-screen image lightbox */
+        .image-lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.92);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.25s ease, visibility 0.25s ease;
+        }
+
+        .image-lightbox.is-open {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        .image-lightbox-content {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 95vw;
+            max-height: 90vh;
+            transform: scale(0.92);
+            transition: transform 0.25s ease;
+        }
+
+        .image-lightbox.is-open .image-lightbox-content {
+            transform: scale(1);
+        }
+
+        .image-lightbox-caption {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .image-lightbox-image {
+            display: block;
+            max-width: min(900px, 90vw);
+            max-height: 78vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border: 2px solid rgba(251, 191, 36, 0.75);
+            border-radius: 18px;
+            box-shadow:
+                0 0 35px rgba(251, 191, 36, 0.18),
+                0 20px 80px rgba(0, 0, 0, 0.65);
+        }
+
+        .image-lightbox-name {
+            margin-top: 14px;
+            color: #fde68a;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 900;
+        }
+
+        .image-lightbox-close {
+            position: absolute;
+            top: -16px;
+            left: -16px;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            background: #151a23;
+            color: white;
+            font-size: 22px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .image-lightbox-close:hover {
+            background: #fbbf24;
+            color: #111;
+        }
+
+        ::-webkit-scrollbar { width: 7px; height: 7px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb {
+            background: #303b49;
+            border-radius: 10px;
+            border: 1px solid var(--green);
+        }
+        ::-webkit-scrollbar-thumb:hover { background: var(--green); }
+
+        @media (max-width: 1024px) {
+            .bracket-grid { gap: 0.75rem; }
+            .hero-title { line-height: 1.35; }
+        }
+
+        @media (max-width: 767px) {
+            html { scroll-padding-top: 85px; }
+            section[id] { scroll-margin-top: 88px; }
+            .site-header-inner { min-height: 72px; }
+
+            .logo-arabic {
+                font-size: clamp(1.05rem, 4.2vw, 1.35rem);
+                line-height: 1.7;
+            }
+
+            .logo-subtitle {
+                font-size: 8px;
+                letter-spacing: 1.3px;
+                margin-top: 1px;
+            }
+
+            .logo-icon {
+                width: 42px !important;
+                height: 42px !important;
+                border-radius: 12px !important;
+            }
+
+            .hero-section { padding-top: 3rem; padding-bottom: 3rem; }
+
+            .hero-title {
+                font-size: clamp(1.8rem, 7vw, 3rem);
+                line-height: 1.45;
+                overflow-wrap: anywhere;
+            }
+
+            .hero-description { font-size: 0.95rem; line-height: 1.9; }
+
+            .main-content {
+                padding-top: 1.5rem;
+                padding-bottom: 2rem;
+                gap: 3rem;
+            }
+
+            .section-card { border-radius: 1.2rem; }
+            .registration-card { padding: 1.15rem !important; }
+
+            .registration-title {
+                font-size: clamp(1.2rem, 5vw, 1.65rem);
+                line-height: 1.9;
+            }
+
+            .registration-title .registration-brand { margin-inline-start: 0.15em; }
+
+            .section-heading {
+                font-size: clamp(1.45rem, 5.5vw, 2rem);
+                line-height: 1.65;
+            }
+
+            .round-selector {
+                width: 100%;
+                max-width: 100%;
+                display: flex;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                overflow-y: hidden;
+                padding: 6px 4px 12px;
+                gap: 8px;
+                scrollbar-width: thin;
+                -webkit-overflow-scrolling: touch;
+                scroll-behavior: smooth;
+                scroll-snap-type: x proximity;
+                overscroll-behavior-x: contain;
+            }
+
+            .round-tab {
+                flex: 0 0 auto;
+                min-height: 44px;
+                font-size: 0.78rem;
+                padding: 0.7rem 0.9rem;
+                scroll-snap-align: center;
+                -webkit-tap-highlight-color: transparent;
+            }
+
+            .mobile-bracket-hint { display: flex; }
+            .bracket-scroll { width: 100%; overflow: visible; }
+
+            .bracket-grid {
+                width: 100%;
+                min-width: 0;
+                display: block;
+            }
+
+            .bracket-col {
+                display: none !important;
+                width: 100%;
+                min-width: 0;
+            }
+
+            .bracket-col.active-round {
+                display: flex !important;
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+
+            .bracket-col > h3 {
+                font-size: 0.85rem;
+                padding: 0.75rem;
+                margin-bottom: 0.25rem;
+            }
+
+            .bracket-matches {
+                display: grid;
+                grid-template-columns: minmax(0, 1fr);
+                gap: 0.65rem;
+                max-height: none;
+                overflow: visible;
+                padding: 0;
+            }
+
+            .match-card { padding: 0.6rem; border-radius: 0.85rem; }
+
+            .match-player {
+                min-height: 42px;
+                padding: 0.65rem;
+                font-size: 0.8rem;
+            }
+
+            .final-card { max-width: 100%; width: 100%; }
+
+            .final-card .final-player {
+                padding: 0.8rem;
+                overflow-wrap: anywhere;
+            }
+
+            .info-card { padding: 0.85rem; min-width: 0; }
+
+            .info-card p:last-child {
+                font-size: clamp(0.95rem, 4vw, 1.2rem);
+                overflow-wrap: anywhere;
+            }
+
+            .action-button { width: 100%; justify-content: center; }
+            .rules-section, .leaderboard-section { padding: 1.15rem !important; }
+
+            .footer-brand {
+                font-size: clamp(0.75rem, 3vw, 1rem);
+                letter-spacing: 0.05em;
+            }
+
+            .hero-badge .hero-brand-name {
+                font-size: clamp(1rem, 4.8vw, 1.3rem);
+                font-weight: 900;
+                line-height: 1.7;
+            }
+
+            .hero-badge .hero-game-name { font-size: clamp(0.8rem, 3.5vw, 0.95rem); }
+            .hall-card-champion { transform: none; }
+
+            .image-lightbox { padding: 16px; }
+
+            .image-lightbox-image {
+                max-width: 88vw;
+                max-height: 72vh;
+                border-radius: 14px;
+            }
+
+            .image-lightbox-close {
+                top: -14px;
+                left: -8px;
+                width: 40px;
+                height: 40px;
+            }
+
+            .image-lightbox-name { font-size: 16px; }
+        }
+
+        @media (max-width: 380px) {
+            .header-logo-group { gap: 0.5rem !important; }
+            .logo-arabic { font-size: 1rem; }
+            .logo-icon { width: 37px !important; height: 37px !important; }
+            .header-actions { gap: 0.25rem !important; }
+
+            .hero-badge {
+                font-size: 0.68rem !important;
+                line-height: 1.8;
+                padding: 0.4rem 0.65rem !important;
+            }
+
+            .hero-badge .hero-brand-name { font-size: 1rem; }
+            .hero-buttons { gap: 0.65rem; }
+
+            .hero-buttons a,
+            .hero-buttons button {
+                font-size: 0.9rem;
+                padding: 0.85rem 1rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-brand-dark text-gray-100 min-h-screen flex flex-col">
+
+    <!-- HEADER -->
+    <header class="sticky top-0 z-50 glass-header border-b border-brand-border">
+        <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+            <div class="site-header-inner flex items-center justify-between gap-3 min-h-20">
+
+                <a href="#home" class="header-logo-group flex items-center gap-3 min-w-0" aria-label="العودة إلى الرئيسية">
+                    <div class="logo-icon w-12 h-12 shrink-0 bg-brand-green/10 border border-brand-green rounded-xl flex items-center justify-center text-brand-green neon-glow">
+                        <i class="fa-brands fa-playstation text-2xl"></i>
+                    </div>
+
+                    <div class="min-w-0">
+                        <span class="logo-arabic">
+                            <span class="logo-world">عالم</span><span class="logo-fantasy">الخيال</span>
+                        </span>
+                        <span class="logo-subtitle block">AHMED WAEL</span>
+                    </div>
+                </a>
+
+                <nav class="hidden md:flex items-center gap-5 lg:gap-8 font-bold text-sm">
+                    <a href="#register" class="text-brand-green hover:text-white transition-colors">التسجيل بالبطولة</a>
+                    <a href="#bracket" class="hover:text-brand-green transition-colors">جدول التصفيات</a>
+                    <a href="#hall-of-fame" class="hover:text-brand-green transition-colors">لوحة الشرف</a>
+                    <a href="#rules" class="hover:text-brand-green transition-colors">القوانين</a>
+                </nav>
+
+                <div class="hidden md:flex items-center gap-2 lg:gap-3 shrink-0">
+                    <button type="button"
+                        onclick="contactWhatsAppDirect('أود الاستفسار عن بطولات Alem El Khayal')"
+                        class="bg-brand-card hover:border-brand-green border border-brand-border text-white font-bold px-3 lg:px-4 py-2.5 rounded-xl transition-all flex items-center gap-2 text-sm">
+                        <i class="fa-brands fa-whatsapp text-green-400 text-lg"></i>
+                        <span>تواصل معنا</span>
+                    </button>
+
+                    <a href="#register" class="bg-brand-green hover:bg-brand-darkGreen text-black font-extrabold px-4 py-2.5 rounded-xl transition-all flex items-center gap-2 text-sm">
+                        <i class="fa-solid fa-gamepad"></i>
+                        <span>اشترك الآن</span>
+                    </a>
+                </div>
+
+                <div class="header-actions flex md:hidden items-center gap-2 shrink-0">
+                    <button type="button"
+                        onclick="contactWhatsAppDirect('السلام عليكم، أود الانضمام لبطولة البلايستيشن في Alem El Khayal وتأكيد حجز مقعدي.')"
+                        class="text-green-400 border border-brand-border bg-brand-card w-10 h-10 rounded-xl text-lg flex items-center justify-center"
+                        aria-label="تواصل عبر واتساب">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </button>
+
+                    <button type="button" id="mobile-menu-btn"
+                        class="text-gray-200 hover:text-brand-green focus:outline-none w-10 h-10 flex items-center justify-center rounded-xl"
+                        aria-label="فتح القائمة" aria-expanded="false" aria-controls="mobile-menu">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-card border-t border-brand-border px-4 pt-3 pb-4 space-y-1">
+            <a href="#register" class="block text-brand-green font-bold py-3 border-b border-brand-border/50">التسجيل بالبطولة</a>
+            <a href="#bracket" class="block hover:text-brand-green font-bold py-3 border-b border-brand-border/50">جدول التصفيات</a>
+            <a href="#hall-of-fame" class="block hover:text-brand-green font-bold py-3 border-b border-brand-border/50">لوحة الشرف</a>
+            <a href="#rules" class="block hover:text-brand-green font-bold py-3">القوانين</a>
+
+            <button type="button"
+                onclick="contactWhatsAppDirect('السلام عليكم، أود الانضمام لبطولة البلايستيشن في Alem El Khayal وتأكيد حجز مقعدي.')"
+                class="w-full bg-brand-green text-black font-bold py-3 rounded-xl flex items-center justify-center gap-2 mt-2">
+                <i class="fa-brands fa-whatsapp text-lg"></i>
+                <span>تواصل عبر الواتساب</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section id="home" class="hero-section relative py-12 md:py-20 overflow-hidden bg-gradient-to-b from-brand-dark via-brand-card/50 to-brand-dark">
+        <div class="absolute inset-0 opacity-10 pointer-events-none"
+            style="background-image: radial-gradient(#00ff66 1px, transparent 1px); background-size: 18px 18px;"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+
+            <div class="hero-badge inline-flex flex-wrap items-center justify-center gap-x-3 gap-y-1 py-2.5 px-4 sm:px-6 rounded-2xl sm:rounded-full bg-brand-green/10 border border-brand-green/30 text-brand-green font-bold text-xs sm:text-sm mb-5">
+                <span>🔥 بطولة</span>
+                <span class="hero-brand-name font-orbitron font-black text-lg sm:text-2xl text-white neon-text">عالم الخيال</span>
+                <span class="hero-game-name text-sm sm:text-base font-extrabold">PES 2019</span>
+            </div>
+
+            <h1 class="hero-title text-3xl sm:text-5xl lg:text-6xl font-black text-white mb-5 leading-tight">
+                أثبت مهاراتك وانزع
+                <span class="text-brand-green neon-text block sm:inline">اللقب والجائزة</span>
+            </h1>
+
+            <p class="hero-description text-gray-400 max-w-2xl mx-auto text-base sm:text-lg mb-8 leading-8">
+                تحدَّ أسطورة السايبر واشترك في أقوى بطولة بلايستيشن!
+                تنافس مع 32 لاعبًا، واحجز مكانك في شجرة التصفيات ولوحة الشرف
+                مع جوائز مالية قيمة للفائزين.
+            </p>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 max-w-4xl mx-auto mb-9">
+                <div class="info-card bg-brand-card/80 border border-brand-border p-4 rounded-2xl">
+                    <i class="fa-solid fa-trophy text-amber-400 text-2xl mb-2"></i>
+                    <p class="text-xs text-gray-400">جائزة المركز الأول</p>
+                    <p id="hero-prize" class="text-xl font-bold text-white mt-1">حسب المنافسين</p>
+                </div>
+
+                <div class="info-card bg-brand-card/80 border border-brand-border p-4 rounded-2xl">
+                    <i class="fa-solid fa-ticket text-brand-green text-2xl mb-2"></i>
+                    <p class="text-xs text-gray-400">رسوم الاشتراك</p>
+                    <p id="hero-fee" class="text-xl font-bold text-white mt-1">60 ج.م</p>
+                </div>
+
+                <div class="info-card bg-brand-card/80 border border-brand-border p-4 rounded-2xl">
+                    <i class="fa-solid fa-users text-brand-green text-2xl mb-2"></i>
+                    <p class="text-xs text-gray-400">عدد المتنافسين</p>
+                    <p id="hero-players" class="text-xl font-bold text-white mt-1">32 لاعب</p>
+                </div>
+
+                <div class="info-card bg-brand-card/80 border border-brand-border p-4 rounded-2xl">
+                    <i class="fa-solid fa-stopwatch text-brand-green text-2xl mb-2"></i>
+                    <p class="text-xs text-gray-400">زمن المباراة</p>
+                    <p class="text-xl font-bold text-white mt-1">12 دقيقة</p>
+                </div>
+            </div>
+
+            <div class="hero-buttons flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4">
+                <a href="#register" class="action-button bg-brand-green text-black font-extrabold text-base sm:text-lg px-8 py-3.5 rounded-2xl hover:bg-brand-darkGreen transition-all shadow-lg flex items-center gap-2">
+                    <span>تسجيل لاعب جديد</span>
+                    <i class="fa-solid fa-arrow-left"></i>
+                </a>
+
+                <button type="button"
+                    onclick="contactWhatsAppDirect('السلام عليكم، أود الانضمام لبطولة البلايستيشن في Alem El Khayal وتأكيد حجز مقعدي.')"
+                    class="action-button bg-brand-card border border-brand-border text-white font-bold text-base sm:text-lg px-8 py-3.5 rounded-2xl hover:border-brand-green transition-all flex items-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-green-400"></i>
+                    <span>انضم عبر الواتساب</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <main class="main-content max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-16 py-8 w-full">
+
+        <!-- Registration -->
+        <section id="register">
+            <div class="registration-card section-card p-6 sm:p-8 lg:p-10 relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-40 h-40 bg-brand-green/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="max-w-3xl mx-auto relative z-10">
+                    <div class="text-center mb-8">
+                        <h2 class="registration-title text-2xl sm:text-3xl font-black text-white mb-3">
+                            <span>انضم لبطولة</span>
+                            <span class="registration-brand">عالم الخيال</span>
+                        </h2>
+
+                        <p class="text-gray-400 text-sm sm:text-base leading-7">
+                            املأ بياناتك واختَر فريقك، وسيتم توجيهك إلى واتساب
+                            لتأكيد الاشتراك وطلب حجز مكانك في دور الـ32.
+                        </p>
+                    </div>
+
+                    <form id="whatsappForm" class="space-y-5">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                            <div class="min-w-0">
+                                <label for="playerName" class="block text-sm font-bold text-gray-300 mb-2">اسم اللاعب</label>
+                                <div class="relative">
+                                    <input type="text" id="playerName" name="playerName" required maxlength="100" autocomplete="name" placeholder="مثال: أحمد محمود" class="field-input">
+                                    <i class="fa-solid fa-user absolute left-4 top-4 text-gray-500 pointer-events-none"></i>
+                                </div>
+                            </div>
+
+                            <div class="min-w-0">
+                                <label for="playerPhone" class="block text-sm font-bold text-gray-300 mb-2">رقم الهاتف (الواتساب)</label>
+                                <div class="relative">
+                                    <input type="tel" id="playerPhone" name="playerPhone" required maxlength="20" autocomplete="tel" inputmode="tel" placeholder="01XXXXXXXXX" class="field-input">
+                                    <i class="fa-solid fa-phone absolute left-4 top-4 text-gray-500 pointer-events-none"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="playerTeam" class="block text-sm font-bold text-gray-300 mb-2">اسم الفريق / النادي الذي ستلعب به</label>
+                            <div class="relative">
+                                <input type="text" id="playerTeam" name="playerTeam" required maxlength="100" placeholder="مثال: ريال مدريد / مانشستر سيتي" class="field-input">
+                                <i class="fa-solid fa-shield-halved absolute left-4 top-4 text-gray-500 pointer-events-none"></i>
+                            </div>
+                            <p class="text-xs text-gray-500 mt-2 leading-6">تنبيه: الفريق المختار ثابت حتى نهاية البطولة.</p>
+                        </div>
+
+                        <div class="bg-brand-dark/70 border border-brand-border p-4 rounded-xl flex items-start gap-3">
+                            <i class="fa-brands fa-whatsapp text-2xl text-green-500 mt-1 shrink-0"></i>
+                            <div class="text-xs sm:text-sm text-gray-400 leading-7">
+                                عند الضغط على زر التسجيل، ستُفتح محادثة واتساب تحتوي على بياناتك لتأكيد الاشتراك والحجز.
+                                رسوم الاشتراك:
+                                <span id="form-fee-display" class="text-brand-green font-bold">60 ج.م</span>.
+                            </div>
+                        </div>
+
+                        <button type="submit" class="w-full min-h-14 bg-brand-green hover:bg-brand-darkGreen text-black font-extrabold text-base sm:text-lg py-4 px-3 rounded-xl transition-all shadow-lg flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-xl"></i>
+                            <span>تسجيل وتأكيد المشاركة عبر الواتساب</span>
+                        </button>
+
+                        <p class="text-center text-xs text-gray-500 leading-6">
+                            إرسال البيانات عبر واتساب لا يعني تأكيد الحجز تلقائيًا؛ انتظر تأكيد الإدارة.
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Upcoming Tournament Announcement -->
+        <section id="upcoming-tournament" aria-labelledby="upcoming-title">
+            <div class="section-card relative overflow-hidden p-6 sm:p-9 lg:p-12 border border-brand-green/40 bg-gradient-to-br from-brand-card via-brand-dark to-brand-card">
+                <div class="absolute -top-20 -left-20 w-64 h-64 rounded-full bg-brand-green/10 blur-3xl pointer-events-none"></div>
+                <div class="absolute -bottom-20 -right-20 w-64 h-64 rounded-full bg-amber-400/10 blur-3xl pointer-events-none"></div>
+                <div class="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
+                    <div class="text-center lg:text-right max-w-2xl">
+                        <span class="inline-flex items-center gap-2 rounded-full bg-brand-green/10 border border-brand-green/40 text-brand-green px-4 py-2 text-xs sm:text-sm font-extrabold mb-5">
+                            <i class="fa-solid fa-bolt"></i> قريبًا في عالم الخيال
+                        </span>
+                        <h2 id="upcoming-title" class="section-heading text-3xl sm:text-4xl font-black text-white leading-relaxed mb-4">
+                            البطولة القادمة <span class="text-brand-green neon-text">جاهز للتحدي؟</span>
+                        </h2>
+                        <p class="text-gray-300 text-sm sm:text-base leading-8 mb-6">
+                            المنافسة لسه مخلصتش! بنجهز لبطولة جديدة في <strong class="text-white">PES 2019</strong>،
+                            وفرصتك جاية علشان تثبت نفسك وتنافس على اللقب. تابع الإعلان الرسمي لمعرفة الموعد وتفاصيل المشاركة.
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+                            <div class="bg-brand-dark/70 border border-brand-border rounded-2xl p-4 flex items-center gap-3 text-right">
+                                <i class="fa-regular fa-calendar-days text-brand-green text-2xl"></i>
+                                <div><p class="text-gray-400 text-xs mb-1">موعد البطولة</p><p class="text-white font-black">سيُعلن قريبًا</p></div>
+                            </div>
+                            <div class="bg-brand-dark/70 border border-brand-border rounded-2xl p-4 flex items-center gap-3 text-right">
+                                <i class="fa-solid fa-trophy text-amber-400 text-2xl"></i>
+                                <div><p class="text-gray-400 text-xs mb-1">الجائزة القادمة</p><p class="text-white font-black">سيُعلن عنها قريبًا</p></div>
+                            </div>
+                        </div>
+                        <div class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+                            <a href="#register" class="action-button inline-flex items-center justify-center gap-2 bg-brand-green hover:bg-brand-darkGreen text-black font-black px-6 py-3.5 rounded-xl transition-all">
+                                <i class="fa-solid fa-gamepad"></i> اطلب المشاركة
+                            </a>
+                            <button type="button" onclick="contactWhatsAppDirect('السلام عليكم، أريد معرفة موعد البطولة القادمة في عالم الخيال وتفاصيل الاشتراك.')" class="action-button inline-flex items-center justify-center gap-2 bg-brand-card hover:border-brand-green text-white font-bold border border-brand-border px-6 py-3.5 rounded-xl transition-all">
+                                <i class="fa-brands fa-whatsapp text-green-400 text-lg"></i> استفسر على واتساب
+                            </button>
+                        </div>
+                    </div>
+                    <div class="shrink-0 w-44 h-44 sm:w-56 sm:h-56 rounded-full bg-amber-400/10 border border-amber-400/30 flex flex-col items-center justify-center shadow-[0_0_65px_rgba(251,191,36,0.10)]">
+                        <i class="fa-solid fa-trophy text-amber-400 text-7xl sm:text-8xl drop-shadow-lg"></i>
+                        <span class="text-amber-300 font-orbitron text-xs font-black tracking-widest mt-4">قريبًا</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tournament Bracket -->
+        <section id="bracket">
+            <div class="flex flex-col gap-4 mb-6">
+                <div>
+                    <h2 class="section-heading text-2xl sm:text-3xl font-black text-white mb-2">
+                        جدول تصفيات <span class="text-brand-green">شجرة الـ32 متسابق</span>
+                    </h2>
+                    <p class="text-gray-400 text-sm leading-7">تابع مباريات البطولة ومسارك نحو النهائي.</p>
+                </div>
+
+                <div class="round-selector flex items-center gap-2" role="group" aria-label="اختيار دور التصفيات">
+                    <button type="button" onclick="switchRoundTab('r32')" id="tab-r32" class="round-tab bg-brand-green text-black font-bold text-xs px-3 py-2 rounded-xl whitespace-nowrap" aria-pressed="true">دور الـ32</button>
+                    <button type="button" onclick="switchRoundTab('r16')" id="tab-r16" class="round-tab bg-brand-card border border-brand-border text-gray-300 font-bold text-xs px-3 py-2 rounded-xl whitespace-nowrap" aria-pressed="false">دور الـ16</button>
+                    <button type="button" onclick="switchRoundTab('r8')" id="tab-r8" class="round-tab bg-brand-card border border-brand-border text-gray-300 font-bold text-xs px-3 py-2 rounded-xl whitespace-nowrap" aria-pressed="false">الربع النهائي</button>
+                    <button type="button" onclick="switchRoundTab('r4')" id="tab-r4" class="round-tab bg-brand-card border border-brand-border text-gray-300 font-bold text-xs px-3 py-2 rounded-xl whitespace-nowrap" aria-pressed="false">النصف النهائي</button>
+                    <button type="button" onclick="switchRoundTab('final')" id="tab-final" class="round-tab bg-brand-card border border-brand-border text-gray-300 font-bold text-xs px-3 py-2 rounded-xl whitespace-nowrap" aria-pressed="false">النهائي 🏆</button>
+                </div>
+            </div>
+
+            <div class="mobile-bracket-hint items-center gap-2 text-xs text-gray-400 mb-3">
+                <i class="fa-solid fa-circle-info text-brand-green"></i>
+                <span>اختَر الجولة من الأعلى لعرض مبارياتها.</span>
+            </div>
+
+            <div class="section-card p-3 sm:p-5 lg:p-6">
+                <div class="bracket-scroll">
+                    <div id="bracket-grid" class="bracket-grid">
+
+                        <div id="col-r32" class="bracket-col flex flex-col justify-around gap-2 active-round">
+                            <h3 class="text-center font-black text-xs text-brand-green bg-brand-dark py-2 px-2 rounded-lg border border-brand-border">دور الـ32 (16 مباراة)</h3>
+                            <div id="r32-matches-container" class="bracket-matches space-y-2 max-h-[600px] overflow-y-auto pr-1"></div>
+                        </div>
+
+                        <div id="col-r16" class="bracket-col flex flex-col justify-around gap-3">
+                            <h3 class="text-center font-black text-xs text-brand-green bg-brand-dark py-2 px-2 rounded-lg border border-brand-border">دور الـ16</h3>
+                            <div id="r16-matches-container" class="bracket-matches space-y-3 max-h-[600px] overflow-y-auto pr-1"></div>
+                        </div>
+
+                        <div id="col-r8" class="bracket-col flex flex-col justify-around gap-4">
+                            <h3 class="text-center font-black text-xs text-brand-green bg-brand-dark py-2 px-2 rounded-lg border border-brand-border">الربع النهائي</h3>
+                            <div id="r8-matches-container" class="bracket-matches space-y-4"></div>
+                        </div>
+
+                        <div id="col-r4" class="bracket-col flex flex-col justify-around gap-6">
+                            <h3 class="text-center font-black text-xs text-brand-green bg-brand-dark py-2 px-2 rounded-lg border border-brand-border">النصف النهائي</h3>
+                            <div id="r4-matches-container" class="bracket-matches space-y-6"></div>
+                        </div>
+
+                        <div id="col-final" class="bracket-col flex flex-col justify-center gap-6">
+                            <h3 class="text-center font-black text-xs text-amber-400 bg-brand-dark py-2 px-2 rounded-lg border border-brand-border">النهائي 🏆</h3>
+
+                            <div class="final-card bg-gradient-to-b from-brand-card to-brand-dark border-2 border-amber-400 rounded-2xl p-4 shadow-xl text-center space-y-3 relative">
+                                <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-amber-400 text-black font-black text-[10px] px-3 py-1 rounded-full whitespace-nowrap">المباراة النهائية</div>
+                                <div class="final-player bg-brand-dark/80 p-3 rounded-xl border border-brand-border">
+                                    <p class="text-xs sm:text-sm font-black text-white" id="final-p1">متأهل نهائي 1</p>
+                                </div>
+                                <span class="text-xs font-bold text-brand-green block">VS</span>
+                                <div class="final-player bg-brand-dark/80 p-3 rounded-xl border border-brand-border">
+                                    <p class="text-xs sm:text-sm font-black text-white" id="final-p2">متأهل نهائي 2</p>
+                                </div>
+                            </div>
+
+                            <div class="text-center bg-brand-green/10 border border-brand-green p-4 rounded-xl">
+                                <i class="fa-solid fa-crown text-amber-400 text-2xl mb-2"></i>
+                                <p class="text-xs text-gray-300 mb-1">بطل بطولة عالم الخيال</p>
+                                <p class="text-lg font-black text-brand-green break-words" id="champion-name">لم يحدد بعد</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hall of Fame -->
+        <section id="hall-of-fame">
+            <div class="text-center mb-8">
+                <h2 class="section-heading text-3xl font-black text-white mb-3">لوحة الشرف <span class="text-brand-green">& الأبطال</span></h2>
+                <p class="text-gray-400 text-sm leading-7">أساطير البطولات السابقة في سايبر عالم الخيال والفرق التي انتصروا بها.</p>
+            </div>
+
+            <div id="hall-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6"></div>
+        </section>
+
+        <!-- Rules and leaderboard -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+
+            <section id="rules" class="rules-section section-card p-5 sm:p-8">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-11 h-11 shrink-0 bg-brand-green/10 border border-brand-green rounded-xl flex items-center justify-center text-brand-green">
+                        <i class="fa-solid fa-scroll text-lg"></i>
+                    </div>
+                    <div class="min-w-0">
+                        <h3 class="text-lg sm:text-xl font-bold text-white leading-7">قوانين وشروط البطولة الرسمية</h3>
+                        <p class="text-xs text-gray-400 mt-1 leading-6">يرجى الالتزام بالتعليمات لضمان التنافس الشريف.</p>
+                    </div>
+                </div>
+
+                <ul class="space-y-3 text-sm text-gray-300">
+                    <li class="flex items-start gap-3 bg-brand-dark/60 p-3 sm:p-4 rounded-xl border border-brand-border">
+                        <i class="fa-solid fa-stopwatch text-brand-green mt-1 text-base shrink-0"></i>
+                        <span class="leading-7"><strong>زمن المباراة:</strong> زمن المباراة 12 دقيقة.</span>
+                    </li>
+                    <li class="flex items-start gap-3 bg-brand-dark/60 p-3 sm:p-4 rounded-xl border border-brand-border">
+                        <i class="fa-solid fa-shield-halved text-brand-green mt-1 text-base shrink-0"></i>
+                        <span class="leading-7"><strong>ثبات الفريق:</strong> بمجرد تسجيلك بالفريق ستكمل به لنهاية البطولة ولا يمكن تغييره.</span>
+                    </li>
+                    <li class="flex items-start gap-3 bg-red-500/10 p-3 sm:p-4 rounded-xl border border-red-500/30">
+                        <i class="fa-solid fa-triangle-exclamation text-red-400 mt-1 text-base shrink-0"></i>
+                        <span class="text-red-200 leading-7"><strong>السلوك الأخلاقي:</strong> ممنوع الألفاظ الخارجة والتجاوز اللفظي أو السلوكي. وفي حالة الانتهاك يتم الإقصاء من البطولة وفقًا للقواعد المعلنة.</span>
+                    </li>
+                    <li class="flex items-start gap-3 bg-brand-dark/60 p-3 sm:p-4 rounded-xl border border-brand-border">
+                        <i class="fa-solid fa-clock text-brand-green mt-1 text-base shrink-0"></i>
+                        <span class="leading-7"><strong>الالتزام بالوقت:</strong> الحضور قبل موعد المباراة. يُسمح بمهلة تأخير 5 دقائق كحد أقصى، وبعدها يعتبر اللاعب المتأخر مهزومًا بنتيجة (3 - 0).</span>
+                    </li>
+                    <li class="flex items-start gap-3 bg-brand-dark/60 border border-brand-border p-3 sm:p-4 rounded-xl">
+                        <i class="fa-solid fa-circle-pause text-brand-green mt-1 text-base shrink-0"></i>
+                        <span class="leading-7"><strong>إيقاف اللعب (Pause):</strong> يُمنع إيقاف اللعبة إلا عند خروج الكرة لرمية تماس أو ركنية أو ضربة مرمى.</span>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="leaderboard-section section-card p-5 sm:p-8">
+                <div class="flex items-center justify-between gap-3 mb-6">
+                    <div class="flex items-center gap-3 min-w-0">
+                        <div class="w-11 h-11 shrink-0 bg-brand-green/10 border border-brand-green rounded-xl flex items-center justify-center text-brand-green">
+                            <i class="fa-solid fa-ranking-star text-lg"></i>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold text-white">ترتيب أفضل اللاعبين</h3>
+                    </div>
+                    <span class="shrink-0 text-[10px] sm:text-xs bg-brand-dark px-2 sm:px-3 py-2 rounded-full text-brand-green border border-brand-border">البطولة الحالية</span>
+                </div>
+                <div class="space-y-3" id="leaderboard-container"></div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-brand-card border-t border-brand-border py-8 sm:py-10 mt-8 text-center text-xs text-gray-400">
+        <div class="max-w-7xl mx-auto px-4 space-y-4">
+            <div class="flex flex-wrap justify-center items-center gap-2 text-white font-bold text-base">
+                <i class="fa-brands fa-playstation text-brand-green text-xl"></i>
+                <span class="footer-brand font-orbitron tracking-wider text-brand-green">بطولة عالم الخيال</span>
+            </div>
+
+            <p class="text-gray-300 font-semibold leading-7">مساحة للتحدي والمنافسة في عالم الألعاب الإلكترونية.</p>
+            <p class="text-brand-green/90 font-bold">إعداد وتطوير: محمد ناصر</p>
+
+            <div class="pt-2">
+                <button type="button"
+                    onclick="contactDeveloperWhatsApp()"
+                    class="max-w-full text-xs text-gray-300 hover:text-brand-green transition-colors bg-brand-dark border border-brand-border px-3 py-2 rounded-lg leading-6">
+                    <i class="fa-brands fa-whatsapp text-green-400 ml-1"></i>
+                    للتواصل مع المطور محمد ناصر اضغط هنا
+                </button>
+            </div>
+
+            <p class="text-gray-500 text-[11px] leading-6">
+                جميع الحقوق محفوظة لعالم الخيال © <span id="year"></span>
+            </p>
+        </div>
+    </footer>
+
+    <!-- PLAYER IMAGE LIGHTBOX -->
+    <div
+        id="image-lightbox"
+        class="image-lightbox"
+        role="dialog"
+        aria-modal="true"
+        aria-label="عرض صورة اللاعب"
+        aria-hidden="true">
+
+        <div class="image-lightbox-content">
+            <button
+                type="button"
+                id="image-lightbox-close"
+                class="image-lightbox-close"
+                aria-label="إغلاق الصورة">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="image-lightbox-caption">
+                <img
+                    id="image-lightbox-image"
+                    class="image-lightbox-image"
+                    src=""
+                    alt="">
+
+                <p id="image-lightbox-name" class="image-lightbox-name"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        'use strict';
+
+        /* رقم واتساب البطولات */
+        const WHATSAPP_NUMBER = '201013258649';
+
+        /* رقم واتساب المطور الشخصي */
+        const DEVELOPER_WHATSAPP_NUMBER = '201559574711';
+
+        const ENTRY_FEE = 60;
+
+        document.getElementById('year').textContent = new Date().getFullYear();
+        document.getElementById('hero-fee').textContent = `${ENTRY_FEE} ج.م`;
+        document.getElementById('form-fee-display').textContent = `${ENTRY_FEE} ج.م`;
+
+        // Mobile menu
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function closeMobileMenu() {
+            mobileMenu.classList.add('hidden');
+            mobileBtn.setAttribute('aria-expanded', 'false');
+            mobileBtn.setAttribute('aria-label', 'فتح القائمة');
+            mobileBtn.innerHTML = '<i class="fa-solid fa-bars text-xl"></i>';
+        }
+
+        function toggleMobileMenu() {
+            const willOpen = mobileMenu.classList.contains('hidden');
+            mobileMenu.classList.toggle('hidden', !willOpen);
+
+            mobileBtn.setAttribute('aria-expanded', String(willOpen));
+            mobileBtn.setAttribute('aria-label', willOpen ? 'إغلاق القائمة' : 'فتح القائمة');
+
+            mobileBtn.innerHTML = willOpen
+                ? '<i class="fa-solid fa-xmark text-xl"></i>'
+                : '<i class="fa-solid fa-bars text-xl"></i>';
+        }
+
+        mobileBtn.addEventListener('click', toggleMobileMenu);
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768) {
+                closeMobileMenu();
+            }
+
+            switchRoundTab(currentRoundKey, false);
+        });
+
+        // Image lightbox elements
+        const imageLightbox = document.getElementById('image-lightbox');
+        const lightboxImage = document.getElementById('image-lightbox-image');
+        const lightboxName = document.getElementById('image-lightbox-name');
+        const lightboxClose = document.getElementById('image-lightbox-close');
+
+        let previouslyFocusedElement = null;
+
+        // Open the selected player's image
+        function openPlayerImage(src, name) {
+            previouslyFocusedElement = document.activeElement;
+
+            lightboxImage.src = src;
+            lightboxImage.alt = `صورة ${name}`;
+            lightboxName.textContent = name;
+
+            imageLightbox.classList.add('is-open');
+            imageLightbox.setAttribute('aria-hidden', 'false');
+
+            document.body.style.overflow = 'hidden';
+            lightboxClose.focus();
+        }
+
+        // Close the image lightbox
+        function closePlayerImage() {
+            if (!imageLightbox.classList.contains('is-open')) {
+                return;
+            }
+
+            imageLightbox.classList.remove('is-open');
+            imageLightbox.setAttribute('aria-hidden', 'true');
+
+            document.body.style.overflow = '';
+
+            lightboxImage.src = '';
+            lightboxImage.alt = '';
+            lightboxName.textContent = '';
+
+            if (previouslyFocusedElement) {
+                previouslyFocusedElement.focus();
+            }
+        }
+
+        lightboxClose.addEventListener('click', closePlayerImage);
+
+        // Close when clicking the dark background
+        imageLightbox.addEventListener('click', event => {
+            if (event.target === imageLightbox) {
+                closePlayerImage();
+            }
+        });
+
+        // Escape closes the menu and image lightbox
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape') {
+                closeMobileMenu();
+                closePlayerImage();
+            }
+        });
+
+        // WhatsApp for tournament inquiries and registrations
+        function contactWhatsAppDirect(customMessage) {
+            const message = customMessage ||
+                'السلام عليكم، أود الانضمام لبطولة البلايستيشن في Alem El Khayal وتأكيد حجز مقعدي.';
+
+            const whatsappUrl =
+                `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+
+            window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+        }
+
+        // WhatsApp for the developer
+        function contactDeveloperWhatsApp() {
+            const message =
+                'السلام عليكم يا محمد، أود التواصل معك بشأن تطوير موقع وتطبيقات.';
+
+            const whatsappUrl =
+                `https://wa.me/${DEVELOPER_WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+
+            window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+        }
+
+        // Default bracket
+        function createDefault32Bracket() {
+            const matches = [];
+
+            for (let i = 1; i <= 16; i++) {
+                matches.push({
+                    id: i,
+                    p1: `لاعب ${i * 2 - 1}`,
+                    t1: 'فريق',
+                    p2: `لاعب ${i * 2}`,
+                    t2: 'فريق',
+                    winner: 0
+                });
+            }
+
+            return {
+                r32: matches,
+
+                r16: Array.from({ length: 8 }, (_, idx) => ({
+                    id: idx + 1,
+                    p1: `فائز م${idx * 2 + 1}`,
+                    t1: '',
+                    p2: `فائز م${idx * 2 + 2}`,
+                    t2: '',
+                    winner: 0
+                })),
+
+                r8: Array.from({ length: 4 }, (_, idx) => ({
+                    id: idx + 1,
+                    p1: 'متأهل 8',
+                    t1: '',
+                    p2: 'متأهل 8',
+                    t2: '',
+                    winner: 0
+                })),
+
+                r4: Array.from({ length: 2 }, (_, idx) => ({
+                    id: idx + 1,
+                    p1: 'متأهل 4',
+                    t1: '',
+                    p2: 'متأهل 4',
+                    t2: '',
+                    winner: 0
+                })),
+
+                final: {
+                    p1: 'متأهل نهائي 1',
+                    p2: 'متأهل نهائي 2',
+                    winner: ''
+                }
+            };
+        }
+
+        // Load saved bracket
+        function loadBracket() {
+            try {
+                const saved = localStorage.getItem('alem_khayal_bracket');
+
+                if (!saved) {
+                    return createDefault32Bracket();
+                }
+
+                const parsed = JSON.parse(saved);
+
+                if (
+                    parsed &&
+                    Array.isArray(parsed.r32) &&
+                    Array.isArray(parsed.r16) &&
+                    Array.isArray(parsed.r8) &&
+                    Array.isArray(parsed.r4) &&
+                    parsed.final
+                ) {
+                    return parsed;
+                }
+            } catch (error) {
+                console.warn('تعذر تحميل بيانات البطولة المحفوظة.', error);
+            }
+
+            return createDefault32Bracket();
+        }
+
+        let currentBracket = loadBracket();
+        let currentRoundKey = 'r32';
+
+        // Hall of Fame: October 2026 winners.
+        // On desktop RTL grid: Ahmed on the right, Amin in the center, Mohamed on the left.
+        const hallOfFameData = [
+            {
+                name: 'أحمد بوشه',
+                team: 'باريس سان جيرمان',
+                prize: '850 ج.م',
+                date: '15 أكتوبر 2026',
+                badge: '🏆 بطل بطولة 15 أكتوبر',
+                champion: false,
+                img: 'Gallery/bousha.jpg'
+            },
+            {
+                name: 'أمين وائل',
+                team: 'برشلونة',
+                prize: '1,250 ج.م',
+                date: '19 أكتوبر 2026',
+                badge: '👑 البطل الحالي',
+                champion: true,
+                img: 'https://images.unsplash.com/photo-1566492031773-4f4e44671857?w=300&auto=format&fit=crop&q=80'
+            },
+            {
+                name: 'محمد ناصر',
+                team: 'ريال مدريد',
+                prize: '950 ج.م',
+                date: '10 أكتوبر 2026',
+                badge: '🏆 بطل بطولة 10 أكتوبر',
+                champion: false,
+                img: 'Gallery/Mido.jpg'
+            }
+        ];
+
+        // Leaderboard data
+        const leaderboardData = [
+            { rank: 1, name: 'أمين وائل', titles: 3, champion: true },
+            { rank: 2, name: 'أحمد بوشه', titles: 2, champion: false },
+            { rank: 3, name: 'محمد ناصر', titles: 2, champion: false },
+            { rank: 4, name: 'جرجاوي', titles: 1, champion: false }
+        ];
+
+        // Match card
+        function createMatchCard(match) {
+            const card = document.createElement('div');
+            card.className = 'match-card bg-brand-dark border border-brand-border rounded-xl p-2 space-y-1 text-xs';
+
+            const player1 = document.createElement('div');
+            player1.className = 'match-player flex justify-between items-center gap-2 p-2 rounded bg-brand-card/60 min-w-0';
+
+            if (match.winner === 1) {
+                player1.classList.add('match-winner');
+            }
+
+            const player1Name = document.createElement('span');
+            player1Name.className = 'truncate text-white min-w-0';
+            player1Name.textContent = match.p1 || '---';
+
+            const player1Team = document.createElement('span');
+            player1Team.className = 'text-[9px] text-gray-400 shrink-0';
+            player1Team.textContent = match.t1 ? `(${match.t1})` : '';
+
+            player1.append(player1Name, player1Team);
+
+            const player2 = document.createElement('div');
+            player2.className = 'match-player flex justify-between items-center gap-2 p-2 rounded bg-brand-card/60 min-w-0';
+
+            if (match.winner === 2) {
+                player2.classList.add('match-winner');
+            }
+
+            const player2Name = document.createElement('span');
+            player2Name.className = 'truncate text-white min-w-0';
+            player2Name.textContent = match.p2 || '---';
+
+            const player2Team = document.createElement('span');
+            player2Team.className = 'text-[9px] text-gray-400 shrink-0';
+            player2Team.textContent = match.t2 ? `(${match.t2})` : '';
+
+            player2.append(player2Name, player2Team);
+            card.append(player1, player2);
+
+            return card;
+        }
+
+        // Render bracket
+        function renderBracket() {
+            const rounds = [
+                ['r32', 'r32-matches-container'],
+                ['r16', 'r16-matches-container'],
+                ['r8', 'r8-matches-container'],
+                ['r4', 'r4-matches-container']
+            ];
+
+            rounds.forEach(([roundKey, containerId]) => {
+                const container = document.getElementById(containerId);
+                container.replaceChildren();
+
+                const matches = Array.isArray(currentBracket[roundKey])
+                    ? currentBracket[roundKey]
+                    : [];
+
+                matches.forEach(match => {
+                    container.appendChild(createMatchCard(match));
+                });
+            });
+
+            if (currentBracket.final) {
+                document.getElementById('final-p1').textContent =
+                    currentBracket.final.p1 || 'متأهل نهائي 1';
+
+                document.getElementById('final-p2').textContent =
+                    currentBracket.final.p2 || 'متأهل نهائي 2';
+
+                document.getElementById('champion-name').textContent =
+                    currentBracket.final.winner || 'لم يحدد بعد';
+            }
+        }
+
+        /*
+         * Round switching:
+         * - Updates the selected tab.
+         * - Shows the selected round on mobile.
+         * - Keeps the complete bracket visible on desktop.
+         */
+        function switchRoundTab(roundKey, shouldScroll = true) {
+            const validRounds = ['r32', 'r16', 'r8', 'r4', 'final'];
+
+            if (!validRounds.includes(roundKey)) {
+                return;
+            }
+
+            currentRoundKey = roundKey;
+
+            const columns = {
+                r32: 'col-r32',
+                r16: 'col-r16',
+                r8: 'col-r8',
+                r4: 'col-r4',
+                final: 'col-final'
+            };
+
+            const selectedColumnId = columns[roundKey];
+            const selectedTab = document.getElementById(`tab-${roundKey}`);
+            const isMobile = window.matchMedia('(max-width: 767px)').matches;
+
+            document.querySelectorAll('.round-tab').forEach(button => {
+                const isActive = button.id === `tab-${roundKey}`;
+
+                button.classList.toggle('bg-brand-green', isActive);
+                button.classList.toggle('text-black', isActive);
+                button.classList.toggle('bg-brand-card', !isActive);
+                button.classList.toggle('border', !isActive);
+                button.classList.toggle('border-brand-border', !isActive);
+                button.classList.toggle('text-gray-300', !isActive);
+
+                button.setAttribute('aria-pressed', String(isActive));
+            });
+
+            document.querySelectorAll('.bracket-col').forEach(column => {
+                const isActive = column.id === selectedColumnId;
+
+                column.classList.toggle('active-round', isActive);
+
+                if (isMobile) {
+                    column.style.setProperty(
+                        'display',
+                        isActive ? 'flex' : 'none',
+                        'important'
+                    );
+                } else {
+                    column.style.removeProperty('display');
+                }
+            });
+
+            if (selectedTab && shouldScroll) {
+                const selector = document.querySelector('.round-selector');
+
+                if (selector) {
+                    const tabLeft = selectedTab.offsetLeft;
+                    const tabWidth = selectedTab.offsetWidth;
+
+                    selector.scrollTo({
+                        left: tabLeft - (selector.clientWidth - tabWidth) / 2,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+
+            if (isMobile && shouldScroll) {
+                const bracketSection = document.getElementById('bracket');
+
+                if (bracketSection) {
+                    const rect = bracketSection.getBoundingClientRect();
+
+                    if (rect.top < 60 || rect.top > window.innerHeight - 150) {
+                        bracketSection.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            }
+        }
+
+        // Render Hall of Fame
+        function renderHallOfFame() {
+            const container = document.getElementById('hall-container');
+            container.replaceChildren();
+
+            hallOfFameData.forEach(hero => {
+                const card = document.createElement('div');
+
+                card.className = [
+                    'hall-card',
+                    'bg-brand-card',
+                    'border',
+                    'rounded-2xl',
+                    'p-5',
+                    'transition-all',
+                    'flex',
+                    'flex-col',
+                    'items-center',
+                    'text-center',
+                    'relative',
+                    'overflow-hidden',
+                    'group',
+                    hero.champion
+                        ? 'hall-card-champion lg:scale-105 lg:-translate-y-1'
+                        : 'border-brand-border hover:border-brand-green/50'
+                ].join(' ');
+
+                // Champion badge
+                const badge = document.createElement('div');
+                badge.className = [
+                    'absolute',
+                    'top-3',
+                    'right-3',
+                    'z-10',
+                    'font-bold',
+                    'text-[10px]',
+                    'px-2.5',
+                    'py-1',
+                    'rounded-full',
+                    hero.champion
+                        ? 'hall-champion-badge'
+                        : 'hall-regular-badge'
+                ].join(' ');
+                badge.textContent = hero.badge;
+
+                // Winner image
+                const image = document.createElement('img');
+                image.src = hero.img;
+                image.alt = `صورة ${hero.name}`;
+                image.loading = 'lazy';
+                image.referrerPolicy = 'no-referrer';
+                image.className = [
+                    'hall-player-image',
+                    'w-20',
+                    'h-20',
+                    'rounded-full',
+                    'object-cover',
+                    'border-2',
+                    'border-brand-green',
+                    'mb-4',
+                    'shadow-lg',
+                    'group-hover:scale-105',
+                    'transition-transform',
+                    'relative',
+                    'z-10'
+                ].join(' ');
+
+                image.addEventListener('error', () => {
+                    image.style.display = 'none';
+                }, { once: true });
+
+                // Allow the player image to open in the lightbox
+                image.tabIndex = 0;
+                image.setAttribute('role', 'button');
+                image.setAttribute('aria-label', `تكبير صورة ${hero.name}`);
+                image.title = 'اضغط لتكبير الصورة';
+
+                image.addEventListener('click', () => {
+                    if (image.style.display !== 'none') {
+                        openPlayerImage(hero.img, hero.name);
+                    }
+                });
+
+                image.addEventListener('keydown', event => {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+
+                        if (image.style.display !== 'none') {
+                            openPlayerImage(hero.img, hero.name);
+                        }
+                    }
+                });
+
+                // Winner name
+                const name = document.createElement('h3');
+                name.className = 'text-lg font-black text-white mb-1 relative z-10';
+                name.textContent = hero.champion ? `👑 ${hero.name}` : hero.name;
+
+                // Team
+                const team = document.createElement('p');
+                team.className = 'text-xs text-gray-400 mb-3 relative z-10';
+                team.textContent = `⚽ الفريق: ${hero.team}`;
+
+                // Date and prize
+                const details = document.createElement('div');
+                details.className = 'w-full bg-brand-dark/80 p-3 rounded-xl border border-brand-border flex justify-between items-center gap-2 text-xs relative z-10';
+
+                const date = document.createElement('span');
+                date.className = 'text-gray-400';
+                date.textContent = hero.date;
+
+                const prize = document.createElement('span');
+                prize.className = 'text-amber-400 font-bold whitespace-nowrap';
+                prize.textContent = hero.prize;
+
+                details.append(date, prize);
+                card.append(badge, image, name, team, details);
+                container.appendChild(card);
+            });
+        }
+
+        // Render leaderboard with a highlighted current champion
+        function renderLeaderboard() {
+            const container = document.getElementById('leaderboard-container');
+            container.replaceChildren();
+
+            leaderboardData.forEach(item => {
+                const row = document.createElement('div');
+
+                row.className = [
+                    'flex',
+                    'items-center',
+                    'gap-3',
+                    'border',
+                    'p-3',
+                    'rounded-xl',
+                    'transition-all',
+                    'duration-300',
+                    item.champion
+                        ? 'leaderboard-champion'
+                        : 'bg-brand-dark/70 border-brand-border'
+                ].join(' ');
+
+                const playerInfo = document.createElement('div');
+                playerInfo.className = 'flex items-center gap-3 min-w-0 flex-1 relative z-10';
+
+                const rank = document.createElement('span');
+                rank.className = [
+                    'leaderboard-rank',
+                    'w-10',
+                    'h-10',
+                    'shrink-0',
+                    'rounded-xl',
+                    'font-black',
+                    'text-sm',
+                    'flex',
+                    'items-center',
+                    'justify-center',
+                    item.rank === 1
+                        ? 'bg-amber-400 text-black'
+                        : 'bg-brand-card text-gray-300'
+                ].join(' ');
+                rank.textContent = item.rank === 1 ? '👑' : item.rank;
+
+                const details = document.createElement('div');
+                details.className = 'min-w-0 flex-1';
+
+                const name = document.createElement('p');
+                name.className = [
+                    'leaderboard-name',
+                    'text-sm',
+                    'font-black',
+                    'break-words',
+                    item.champion ? 'text-amber-300' : 'text-white'
+                ].join(' ');
+                name.textContent = item.name;
+
+                const titles = document.createElement('p');
+                titles.className = 'text-[10px] text-gray-400 mt-1';
+                titles.textContent = `عدد الألقاب: ${item.titles} ${item.titles === 1 ? 'بطولة' : 'بطولات'}`;
+
+                details.append(name, titles);
+
+                if (item.champion) {
+                    const label = document.createElement('span');
+                    label.className = 'current-champion-label';
+                    label.innerHTML = '<i class="fa-solid fa-crown"></i><span>البطل الحالي | حامل اللقب</span>';
+                    details.appendChild(label);
+                }
+
+                playerInfo.append(rank, details);
+                row.appendChild(playerInfo);
+
+                if (item.champion) {
+                    const crown = document.createElement('span');
+                    crown.className = 'leaderboard-crown relative z-10';
+                    crown.innerHTML = '<i class="fa-solid fa-crown"></i>';
+                    crown.setAttribute('aria-label', 'البطل الحالي');
+                    row.appendChild(crown);
+                }
+
+                container.appendChild(row);
+            });
+        }
+
+        // Registration form
+        document.getElementById('whatsappForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('playerName').value.trim();
+            const phone = document.getElementById('playerPhone').value.trim();
+            const team = document.getElementById('playerTeam').value.trim();
+
+            if (!name || !phone || !team) {
+                alert('يرجى ملء جميع البيانات قبل التسجيل.');
+                return;
+            }
+
+            if (name.length > 100 || phone.length > 20 || team.length > 100) {
+                alert('يرجى مراجعة البيانات المدخلة.');
+                return;
+            }
+
+            const message = [
+                'السلام عليكم، أود الانضمام لبطولة البلايستيشن في Alem El Khayal وتأكيد حجز مقعدي.',
+                '',
+                '🎮 بيانات الاشتراك:',
+                `اسم اللاعب: ${name}`,
+                `رقم الهاتف: ${phone}`,
+                `الفريق المختار: ${team}`,
+                `رسوم الاشتراك: ${ENTRY_FEE} ج.م`,
+                '',
+                'يرجى تأكيد الحجز وإرسال طريقة الدفع.'
+            ].join('\n');
+
+            const whatsappUrl =
+                `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+
+            window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+        });
+
+        // Initialize website
+        function initializeWebsite() {
+            renderBracket();
+            renderHallOfFame();
+            renderLeaderboard();
+
+            document.getElementById('form-fee-display').textContent =
+                `${ENTRY_FEE} ج.م`;
+
+            switchRoundTab('r32', false);
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeWebsite, { once: true });
+        } else {
+            initializeWebsite();
+        }
+    </script>
+
+</body>
+</html>
