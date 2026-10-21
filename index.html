@@ -675,7 +675,7 @@
                         <span class="logo-arabic">
                             <span class="logo-world">عالم</span><span class="logo-fantasy">الخيال</span>
                         </span>
-                        <span class="logo-subtitle block">AHMED MAGED</span>
+                        <span class="logo-subtitle block">JustATech</span>
                     </div>
                 </a>
 
@@ -688,10 +688,10 @@
 
                 <div class="hidden md:flex items-center gap-2 lg:gap-3 shrink-0">
                     <button type="button"
-                        onclick="contactWhatsAppDirect('أود الاستفسار عن بطولات Alem El Khayal')"
+                        onclick="contactTelegramGroup('أود الاستفسار عن بطولات Alem El Khayal')"
                         class="bg-brand-card hover:border-brand-green border border-brand-border text-white font-bold px-3 lg:px-4 py-2.5 rounded-xl transition-all flex items-center gap-2 text-sm">
-                        <i class="fa-brands fa-whatsapp text-green-400 text-lg"></i>
-                        <span>تواصل معنا</span>
+                        <i class="fa-brands fa-telegram text-green-400 text-lg"></i>
+                        <span>جروب التليجرام</span>
                     </button>
 
                     <a href="#register" class="bg-brand-green hover:bg-brand-darkGreen text-black font-extrabold px-4 py-2.5 rounded-xl transition-all flex items-center gap-2 text-sm">
@@ -702,10 +702,10 @@
 
                 <div class="header-actions flex md:hidden items-center gap-2 shrink-0">
                     <button type="button"
-                        onclick="contactWhatsAppDirect('السلام عليكم، أود الانضمام لبطولة البلايستيشن في Alem El Khayal وتأكيد حجز مقعدي.')"
+                        onclick="contactTelegramGroup('السلام عليكم، أود الانضمام لبطولة البلايستيشن في Alem El Khayal وتأكيد حجز مقعدي.')"
                         class="text-green-400 border border-brand-border bg-brand-card w-10 h-10 rounded-xl text-lg flex items-center justify-center"
-                        aria-label="تواصل عبر واتساب">
-                        <i class="fa-brands fa-whatsapp"></i>
+                        aria-label="الانضمام إلى جروب التليجرام">
+                        <i class="fa-brands fa-telegram"></i>
                     </button>
 
                     <button type="button" id="mobile-menu-btn"
@@ -725,10 +725,10 @@
             <a href="#rules" class="block hover:text-brand-green font-bold py-3">القوانين</a>
 
             <button type="button"
-                onclick="contactWhatsAppDirect('السلام عليكم، أود الانضمام لبطولة البلايستيشن في Alem El Khayal وتأكيد حجز مقعدي.')"
+                onclick="contactTelegramGroup('السلام عليكم، أود الانضمام لبطولة البلايستيشن في Alem El Khayal وتأكيد حجز مقعدي.')"
                 class="w-full bg-brand-green text-black font-bold py-3 rounded-xl flex items-center justify-center gap-2 mt-2">
-                <i class="fa-brands fa-whatsapp text-lg"></i>
-                <span>تواصل عبر الواتساب</span>
+                <i class="fa-brands fa-telegram text-lg"></i>
+                <span>انضم إلى جروب التليجرام</span>
             </button>
         </div>
     </header>
@@ -790,10 +790,10 @@
                 </a>
 
                 <button type="button"
-                    onclick="contactWhatsAppDirect('السلام عليكم، أود الانضمام لبطولة البلايستيشن في Alem El Khayal وتأكيد حجز مقعدي.')"
+                    onclick="contactTelegramGroup('السلام عليكم، أود الانضمام لبطولة البلايستيشن في Alem El Khayal وتأكيد حجز مقعدي.')"
                     class="action-button bg-brand-card border border-brand-border text-white font-bold text-base sm:text-lg px-8 py-3.5 rounded-2xl hover:border-brand-green transition-all flex items-center gap-2">
-                    <i class="fa-brands fa-whatsapp text-green-400"></i>
-                    <span>انضم عبر الواتساب</span>
+                    <i class="fa-brands fa-telegram text-green-400"></i>
+                    <span>انضم عبر التليجرام</span>
                 </button>
             </div>
         </div>
@@ -814,12 +814,12 @@
                         </h2>
 
                         <p class="text-gray-400 text-sm sm:text-base leading-7">
-                            املأ بياناتك واختَر فريقك، وسيتم توجيهك إلى واتساب
+                            املأ بياناتك واختَر فريقك، ثم انضم إلى جروب التليجرام لإرسال بيانات التسجيل.
                             لتأكيد الاشتراك وطلب حجز مكانك في دور الـ32.
                         </p>
                     </div>
 
-                    <form id="whatsappForm" class="space-y-5">
+                    <form id="telegramForm" class="space-y-5">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                             <div class="min-w-0">
                                 <label for="playerName" class="block text-sm font-bold text-gray-300 mb-2">اسم اللاعب</label>
@@ -830,7 +830,7 @@
                             </div>
 
                             <div class="min-w-0">
-                                <label for="playerPhone" class="block text-sm font-bold text-gray-300 mb-2">رقم الهاتف (الواتساب)</label>
+                                <label for="playerPhone" class="block text-sm font-bold text-gray-300 mb-2">رقم هاتفك للتواصل عند الحاجة</label>
                                 <div class="relative">
                                     <input type="tel" id="playerPhone" name="playerPhone" required maxlength="20" autocomplete="tel" inputmode="tel" placeholder="01XXXXXXXXX" class="field-input">
                                     <i class="fa-solid fa-phone absolute left-4 top-4 text-gray-500 pointer-events-none"></i>
@@ -848,21 +848,21 @@
                         </div>
 
                         <div class="bg-brand-dark/70 border border-brand-border p-4 rounded-xl flex items-start gap-3">
-                            <i class="fa-brands fa-whatsapp text-2xl text-green-500 mt-1 shrink-0"></i>
+                            <i class="fa-brands fa-telegram text-2xl text-green-500 mt-1 shrink-0"></i>
                             <div class="text-xs sm:text-sm text-gray-400 leading-7">
-                                عند الضغط على زر التسجيل، ستُفتح محادثة واتساب تحتوي على بياناتك لتأكيد الاشتراك والحجز.
+                                عند الضغط على زر التسجيل، سيتم نسخ بياناتك الأساسية وفتح جروب التليجرام. الصق البيانات هناك لإتمام التسجيل.
                                 رسوم الاشتراك:
                                 <span id="form-fee-display" class="text-brand-green font-bold">60 ج.م</span>.
                             </div>
                         </div>
 
                         <button type="submit" class="w-full min-h-14 bg-brand-green hover:bg-brand-darkGreen text-black font-extrabold text-base sm:text-lg py-4 px-3 rounded-xl transition-all shadow-lg flex items-center justify-center gap-2">
-                            <i class="fa-brands fa-whatsapp text-xl"></i>
-                            <span>تسجيل وتأكيد المشاركة عبر الواتساب</span>
+                            <i class="fa-brands fa-telegram text-xl"></i>
+                            <span>تسجيل ونسخ البيانات للانضمام عبر التليجرام</span>
                         </button>
 
                         <p class="text-center text-xs text-gray-500 leading-6">
-                            إرسال البيانات عبر واتساب لا يعني تأكيد الحجز تلقائيًا؛ انتظر تأكيد الإدارة.
+                            الانضمام إلى الجروب لا يعني تأكيد الحجز تلقائيًا؛ انتظر تأكيد الإدارة.
                         </p>
                     </form>
                 </div>
@@ -900,8 +900,8 @@
                             <a href="#register" class="action-button inline-flex items-center justify-center gap-2 bg-brand-green hover:bg-brand-darkGreen text-black font-black px-6 py-3.5 rounded-xl transition-all">
                                 <i class="fa-solid fa-gamepad"></i> اطلب المشاركة
                             </a>
-                            <button type="button" onclick="contactWhatsAppDirect('السلام عليكم، أريد معرفة موعد البطولة القادمة في عالم الخيال وتفاصيل الاشتراك.')" class="action-button inline-flex items-center justify-center gap-2 bg-brand-card hover:border-brand-green text-white font-bold border border-brand-border px-6 py-3.5 rounded-xl transition-all">
-                                <i class="fa-brands fa-whatsapp text-green-400 text-lg"></i> استفسر على واتساب
+                            <button type="button" onclick="contactTelegramGroup('السلام عليكم، أريد معرفة موعد البطولة القادمة في عالم الخيال وتفاصيل الاشتراك.')" class="action-button inline-flex items-center justify-center gap-2 bg-brand-card hover:border-brand-green text-white font-bold border border-brand-border px-6 py-3.5 rounded-xl transition-all">
+                                <i class="fa-brands fa-telegram text-green-400 text-lg"></i> استفسر عبر التليجرام
                             </button>
                         </div>
                     </div>
@@ -1064,10 +1064,10 @@
 
             <div class="pt-2">
                 <button type="button"
-                    onclick="contactDeveloperWhatsApp()"
+                    onclick="contactTelegramGroup()"
                     class="max-w-full text-xs text-gray-300 hover:text-brand-green transition-colors bg-brand-dark border border-brand-border px-3 py-2 rounded-lg leading-6">
-                    <i class="fa-brands fa-whatsapp text-green-400 ml-1"></i>
-                    للتواصل مع المطور محمد ناصر اضغط هنا
+                    <i class="fa-brands fa-telegram text-green-400 ml-1"></i>
+                    للانضمام إلى جروب عالم الخيال على التليجرام اضغط هنا
                 </button>
             </div>
 
@@ -1111,11 +1111,8 @@
     <script>
         'use strict';
 
-        /* رقم واتساب البطولات */
-        const WHATSAPP_NUMBER = '201559574711';
-
-        /* رقم واتساب المطور الشخصي */
-        const DEVELOPER_WHATSAPP_NUMBER = '201559574711';
+        /* رابط جروب التليجرام العام — لا يعرض رقمك الشخصي */
+        const TELEGRAM_GROUP_URL = 'https://t.me/F_society8';
 
         const ENTRY_FEE = 60;
 
@@ -1220,26 +1217,9 @@
             }
         });
 
-        // WhatsApp for tournament inquiries and registrations
-        function contactWhatsAppDirect(customMessage) {
-            const message = customMessage ||
-                'السلام عليكم، أود الانضمام لبطولة البلايستيشن في Alem El Khayal وتأكيد حجز مقعدي.';
-
-            const whatsappUrl =
-                `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-
-            window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
-        }
-
-        // WhatsApp for the developer
-        function contactDeveloperWhatsApp() {
-            const message =
-                'السلام عليكم يا محمد، أود التواصل معك بشأن تطوير موقع وتطبيقات.';
-
-            const whatsappUrl =
-                `https://wa.me/${DEVELOPER_WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-
-            window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+        // فتح جروب التليجرام للاستفسارات والتواصل
+        function contactTelegramGroup() {
+            window.open(TELEGRAM_GROUP_URL, '_blank', 'noopener,noreferrer');
         }
 
         // Default bracket
@@ -1734,8 +1714,8 @@
             });
         }
 
-        // Registration form
-        document.getElementById('whatsappForm').addEventListener('submit', function(event) {
+        // Registration form: copy basic details (not the phone number) and open Telegram.
+        document.getElementById('telegramForm').addEventListener('submit', async function(event) {
             event.preventDefault();
 
             const name = document.getElementById('playerName').value.trim();
@@ -1753,21 +1733,24 @@
             }
 
             const message = [
-                'السلام عليكم، أود الانضمام لبطولة البلايستيشن في Alem El Khayal وتأكيد حجز مقعدي.',
+                'السلام عليكم، أود الاشتراك في بطولة عالم الخيال.',
                 '',
-                '🎮 بيانات الاشتراك:',
+                '🎮 بيانات التسجيل:',
                 `اسم اللاعب: ${name}`,
-                `رقم الهاتف: ${phone}`,
                 `الفريق المختار: ${team}`,
                 `رسوم الاشتراك: ${ENTRY_FEE} ج.م`,
                 '',
                 'يرجى تأكيد الحجز وإرسال طريقة الدفع.'
-            ].join('\n');
+            ].join('\\n');
 
-            const whatsappUrl =
-                `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+            try {
+                await navigator.clipboard.writeText(message);
+                alert('تم نسخ بيانات التسجيل (من دون رقم هاتفك). الصقها في جروب التليجرام بعد فتحه.');
+            } catch (error) {
+                alert('سيتم فتح جروب التليجرام. اكتب بيانات التسجيل هناك يدويًا، ولا تنشر رقم هاتفك علنًا.');
+            }
 
-            window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+            window.open(TELEGRAM_GROUP_URL, '_blank', 'noopener,noreferrer');
         });
 
         // Initialize website
